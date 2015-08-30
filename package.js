@@ -2,10 +2,9 @@
 
 Package.describe({
   name: 'brettle:accounts-anonymous-ui',
-  version: '0.3.2',
+  version: '0.4.0',
   // Brief, one-line summary of the package.
-  summary: 'Monkey patches accounts UI packages so anonymous users can sign ' +
-    'up and sign in.',
+  summary: 'Deprecated. Use brettle:accounts-patch-ui instead.',
   // URL to the Git repository containing the source code for this package.
   git: 'https://github.com/brettle/meteor-accounts-anonymous-ui.git',
   // By default, Meteor will default to using README.md for documentation.
@@ -18,6 +17,9 @@ Package.onUse(function(api) {
   api.use('underscore', 'client');
   api.use('accounts-base', 'client');
   api.use('templating', 'client');
+
+  // The new and improved package that does all the work
+  api.use('brettle:accounts-patch-ui@0.0.1');
 
   // Whater UI variation is being used, it needs to load first so that
   // we can monkey patch it's atNav and atForm templates.
@@ -58,8 +60,6 @@ Package.onUse(function(api) {
 
   api.export('AccountsAnonymousUi');
   api.addFiles('accounts-anonymous-ui.js', 'client');
-  api.addFiles('patch-accounts-ui-unstyled.js', 'client');
-  api.addFiles('patch-useraccounts.js', 'client');
 });
 
 Package.onTest(function(api) {
